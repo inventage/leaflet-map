@@ -1,7 +1,7 @@
-import { html, css, LitElement, property } from 'lit-element';
+import { html, css, LitElement, property, TemplateResult } from 'lit-element';
 
 export class LeafletMap extends LitElement {
-  static styles =css`
+  static styles = css`
     :host {
       display: block;
       padding: 25px;
@@ -9,15 +9,15 @@ export class LeafletMap extends LitElement {
     }
   `;
 
-  @property({type: String}) title = 'Hey there';
+  @property({ type: String }) title = 'Hey there';
 
-  @property({type: Number}) counter = 5;
+  @property({ type: Number }) counter = 5;
 
-  __increment() {
+  __increment(): void {
     this.counter += 1;
   }
 
-  render() {
+  render(): TemplateResult {
     return html`
       <h2>${this.title} Nr. ${this.counter}!</h2>
       <button @click=${this.__increment}>increment</button>

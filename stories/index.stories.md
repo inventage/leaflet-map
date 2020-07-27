@@ -4,36 +4,24 @@ import { html } from '@open-wc/demoing-storybook';
 import '../dist/leaflet-map.js';
 
 export default {
-  title: 'LeafletMap',
+  title: '<leaflet-map>',
   component: 'leaflet-map',
-  options: { selectedPanel: "storybookjs/knobs/panel" },
+  options: { selectedPanel: 'storybookjs/knobs/panel' },
 };
 ```
 
-# LeafletMap
+# &#x3C;leaflet-map&#x3E;
 
-A component for...
-
-## Features:
-
-- a
-- b
-- ...
-
-## How to use
-
-### Installation
-
-```bash
-yarn add leaflet-map
-```
-
-```js
-import 'leaflet-map/leaflet-map.js';
-```
+A web component for displaying a map with certain features using [Leaflet].
 
 ```js preview-story
-export const Simple = () => html`
-  <leaflet-map style="height: 200px;"></leaflet-map>
-`;
+export const Simple = () => html` <leaflet-map style="height: 200px;"></leaflet-map> `;
 ```
+
+## API
+
+The api table will show the data of `<leaflet-map>` in your `custom-elements.json`.
+
+<sb-props of="leaflet-map"></sb-props>
+
+[leaflet]: https://leafletjs.com/

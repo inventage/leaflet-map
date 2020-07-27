@@ -4,20 +4,20 @@ import '../dist/leaflet-map.js';
 
 <!-- @see https://github.com/open-wc/open-wc/edit/master/packages/demoing-storybook/demo/stories/withWebComponentsKnobs.stories.mdx -->
 
-# Card Variations
+# Knobs
 
-This story uses [mdx] to document different variations of the card component. Also, the knobs are [automatically generated](https://open-wc.org/demoing-storybook/?path=/docs/decorators-withwebcomponentknobs--example-output) based on `custom-elements.json`.
+This story uses [mdx] to document different variations of the card component. The knobs are [automatically generated](https://open-wc.org/demoing-storybook/?path=/docs/decorators-withwebcomponentknobs--example-output) based on `custom-elements.json`.
 
 <Meta
-  title="LeafletMap"
+  title="<leaflet-map>"
   decorators={[withKnobs, withWebComponentsKnobs]}
   parameters={{ component: 'leaflet-map', options: { selectedPanel: 'storybookjs/knobs/panel' } }}
 />
 
-## Custom Title
+## All Knobs
 
 <Preview>
-  <Story name="All Knobs">{html`<leaflet-map style="height: 50vh;"></leaflet-map>`}</Story>
+  <Story name="All Knobs" parameters={{ customElements: { filterProperties: ['latitude', 'longitude', 'radius', 'updateCenterOnClick', 'detectRetina'] } }}>{html`<leaflet-map style="height: 50vh;"></leaflet-map>`}</Story>
 </Preview>
 
 [mdx]: https://github.com/mdx-js/mdx

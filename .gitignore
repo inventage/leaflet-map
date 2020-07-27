@@ -20,3 +20,6 @@
 /dist/
 /out-tsc/
 /storybook-static
+
+# npm pack
+leaflet*.tgz

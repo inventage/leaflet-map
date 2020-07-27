@@ -9,7 +9,8 @@
   "module": "dist/index.js",
   "files": [
     "custom-elements.json",
-    "dist"
+    "dist/**/*.d.ts",
+    "dist/**/*.js"
   ],
   "scripts": {
     "analyze:custom-elements": "wca analyze '**/*.ts' --outFile custom-elements.json",

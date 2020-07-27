@@ -38,6 +38,16 @@
           "name": "detectRetina",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "defaultZoom",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "maxZoom",
+          "type": "number",
+          "default": "19"
         }
       ],
       "properties": [
@@ -81,14 +91,28 @@
           "attribute": "detectRetina",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "defaultZoom",
+          "attribute": "defaultZoom",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "maxZoom",
+          "attribute": "maxZoom",
+          "type": "number",
+          "default": "19"
         }
       ],
       "events": [
         {
-          "name": "pending-state"
+          "name": "tiles-loading",
+          "description": "Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded."
         },
         {
-          "name": "center-updated"
+          "name": "center-updated",
+          "description": "Event transporting the latitude and longitude each time the map center has updated."
         }
       ]
     }

@@ -2,6 +2,9 @@
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
+[![made with open-wc](https://img.shields.io/badge/made%20with-open--wc-%23217ff9)](https://open-wc.org)
+[![Main Workflow](https://github.com/inventage/leaflet-map/workflows/Main%20Workflow/badge.svg)](https://github.com/inventage/leaflet-map/actions?query=workflow%3A"Main+Workflow")
+
 ## Installation
 ```bash
 npm i leaflet-map

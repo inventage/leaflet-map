@@ -3,38 +3,156 @@
   "tags": [
     {
       "name": "leaflet-map",
+      "path": "./dist/leaflet-map.d.ts",
+      "properties": [
+        {
+          "name": "latitude",
+          "type": "number"
+        },
+        {
+          "name": "longitude",
+          "type": "number"
+        },
+        {
+          "name": "radius",
+          "type": "number"
+        },
+        {
+          "name": "markers",
+          "type": "MarkerInformation[]"
+        },
+        {
+          "name": "selectedMarker",
+          "type": "MarkerInformation | null"
+        },
+        {
+          "name": "updateCenterOnClick",
+          "type": "boolean"
+        },
+        {
+          "name": "detectRetina",
+          "type": "boolean"
+        },
+        {
+          "name": "assetsPath",
+          "type": "string"
+        },
+        {
+          "name": "imagePath",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "leaflet-map",
       "path": "./leaflet-map.ts",
       "attributes": [
         {
-          "name": "title",
-          "type": "string",
-          "default": "\"Hey there\""
+          "name": "latitude",
+          "type": "number",
+          "default": "47.38991"
         },
         {
-          "name": "counter",
+          "name": "longitude",
           "type": "number",
-          "default": "5"
+          "default": "8.51604"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "markers",
+          "type": "MarkerInformation[]",
+          "default": "[]"
+        },
+        {
+          "name": "selectedMarker",
+          "type": "MarkerInformation | null"
+        },
+        {
+          "name": "updateCenterOnClick",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "detectRetina",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "assetsPath",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imagePath",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
-          "name": "title",
-          "attribute": "title",
-          "type": "string",
-          "default": "\"Hey there\""
+          "name": "latitude",
+          "attribute": "latitude",
+          "type": "number",
+          "default": "47.38991"
         },
         {
-          "name": "counter",
-          "attribute": "counter",
+          "name": "longitude",
+          "attribute": "longitude",
           "type": "number",
-          "default": "5"
+          "default": "8.51604"
+        },
+        {
+          "name": "radius",
+          "attribute": "radius",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "markers",
+          "attribute": "markers",
+          "type": "MarkerInformation[]",
+          "default": "[]"
+        },
+        {
+          "name": "selectedMarker",
+          "attribute": "selectedMarker",
+          "type": "MarkerInformation | null"
+        },
+        {
+          "name": "updateCenterOnClick",
+          "attribute": "updateCenterOnClick",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "detectRetina",
+          "attribute": "detectRetina",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "assetsPath",
+          "attribute": "assetsPath",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imagePath",
+          "attribute": "imagePath",
+          "type": "string",
+          "default": "\"\""
         }
       ],
-      "cssProperties": [
+      "events": [
         {
-          "name": "--leaflet-map-text-color",
-          "description": "Text Color",
-          "type": "Color"
+          "name": "pending-state"
+        },
+        {
+          "name": "center-updated"
         }
       ]
     }

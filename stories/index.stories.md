@@ -34,16 +34,6 @@ import 'leaflet-map/leaflet-map.js';
 
 ```js preview-story
 export const Simple = () => html`
-  <leaflet-map></leaflet-map>
-`;
-```
-
-## Variations
-
-###### Custom Title
-
-```js preview-story
-export const CustomTitle = () => html`
-  <leaflet-map title="Hello World"></leaflet-map>
+  <leaflet-map style="height: 200px;"></leaflet-map>
 `;
 ```

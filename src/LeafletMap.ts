@@ -56,6 +56,10 @@ export class LeafletMap extends LitElement {
 
   static get styles() {
     return css`
+      :host {
+        display: block;
+      }
+
       .map {
         width: 100%;
         height: 100%;

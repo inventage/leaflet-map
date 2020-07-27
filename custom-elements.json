@@ -32,14 +32,6 @@
         {
           "name": "detectRetina",
           "type": "boolean"
-        },
-        {
-          "name": "assetsPath",
-          "type": "string"
-        },
-        {
-          "name": "imagePath",
-          "type": "string"
         }
       ]
     },
@@ -80,16 +72,6 @@
           "name": "detectRetina",
           "type": "boolean",
           "default": "true"
-        },
-        {
-          "name": "assetsPath",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "imagePath",
-          "type": "string",
-          "default": "\"\""
         }
       ],
       "properties": [
@@ -133,18 +115,6 @@
           "attribute": "detectRetina",
           "type": "boolean",
           "default": "true"
-        },
-        {
-          "name": "assetsPath",
-          "attribute": "assetsPath",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "imagePath",
-          "attribute": "imagePath",
-          "type": "string",
-          "default": "\"\""
         }
       ],
       "events": [

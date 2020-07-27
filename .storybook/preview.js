@@ -16,4 +16,4 @@ async function run() {
   setCustomElements(customElements);
 }
 
-run();
+run().catch(e => console.error(e));

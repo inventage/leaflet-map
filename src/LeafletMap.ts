@@ -38,10 +38,6 @@ export class LeafletMap extends LitElement {
 
   @property({ type: Boolean }) detectRetina = true;
 
-  @property({ type: String }) assetsPath = '';
-
-  @property({ type: String }) imagePath = '';
-
   private map!: Map;
 
   private mapCenterMarker: Marker | null = null;
@@ -69,10 +65,6 @@ export class LeafletMap extends LitElement {
 
   constructor() {
     super();
-
-    // Set public path to Leaflet marker images explicitly
-    // @see https://github.com/Leaflet/Leaflet/issues/766
-    // L.Icon.Default.imagePath = '/assets/leaflet/';
 
     this.markerRed = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
@@ -191,9 +183,7 @@ export class LeafletMap extends LitElement {
   }
 
   render() {
-    const cssPath = this.assetsPath ? `${this.assetsPath}/leaflet.css` : `https://unpkg.com/leaflet@${L.version}/dist/leaflet.css`;
-
-    return html`<link rel="stylesheet" href="${cssPath}" />
+    return html`<link rel="stylesheet" href="https://unpkg.com/leaflet@${L.version}/dist/leaflet.css" />
       <div class="map"></div>`;
   }
 

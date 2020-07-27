@@ -209,12 +209,14 @@ export class LeafletMap extends LitElement {
     return this.latitude && this.longitude && this.map;
   }
 
-  _centerMap(zoom = this.defaultZoom) {
+  _centerMap() {
     if (!this._hasValidMapData()) {
       return;
     }
 
-    this.map?.setView([this.latitude, this.longitude], zoom);
+    const zoom = this.map.getZoom() || this.defaultZoom;
+
+    this.map.setView([this.latitude, this.longitude], zoom);
   }
 
   _updateMapCenterMarker() {
@@ -230,6 +232,7 @@ export class LeafletMap extends LitElement {
 
     // Set a new one
     this.mapCenterMarker = L.marker([this.latitude, this.longitude], { icon: this.markerRed }).addTo(this.map!);
+    this.map.panTo(this.mapCenterMarker!.getLatLng());
   }
 
   _updateMarkers() {
@@ -268,7 +271,7 @@ export class LeafletMap extends LitElement {
 
     if (bounds) {
       this.map.fitBounds(bounds);
-      this.map.setZoom(this.map.getBoundsZoom(bounds, true) - 1);
+      // this.map.setZoom(this.map.getBoundsZoom(bounds, true) - 1);
     }
   }
 

@@ -22,7 +22,9 @@
     "storybook": "concurrently --kill-others --names tsc,storybook \"npm run build:watch\" \"start-storybook --node-resolve --watch --open\"",
     "storybook:build": "build-storybook",
     "test": "npm run build && karma start --coverage",
-    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run build:watch\" \"karma start --auto-watch=true --single-run=false\""
+    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run build:watch\" \"karma start --auto-watch=true --single-run=false\"",
+    "test:wtr": "npm run build && wtr 'dist/**/*.test.js' --coverage --playwright --browsers chromium firefox webkit",
+    "test:wtr:watch": "concurrently --kill-others --names tsc,karma \"npm run build:watch\" \"wtr 'dist/**/*.test.js' --watch\""
   },
   "dependencies": {
     "lit-element": "^2.3.1",
@@ -36,6 +38,8 @@
     "@types/node": "14.0.25",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
+    "@web/test-runner": "^0.6.45",
+    "@web/test-runner-playwright": "^0.4.10",
     "concurrently": "^5.2.0",
     "deepmerge": "^4.2.2",
     "es-dev-server": "^1.57.0",

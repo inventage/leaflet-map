@@ -103,7 +103,7 @@ export class LeafletMap extends LitElement {
    *
    * @param _changedProperties
    */
-  firstUpdated(_changedProperties: PropertyValues) {
+  async firstUpdated(_changedProperties: PropertyValues) {
     super.firstUpdated(_changedProperties);
 
     const mapDomElement = this.renderRoot.querySelector('.map') as HTMLElement;
@@ -159,10 +159,10 @@ export class LeafletMap extends LitElement {
     this._fitBounds();
 
     // Give the browser a chance to paint and trigger a resize
-    // Should fix some issues with intial renders
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    });
+    // Should fix some issues with initial renders
+    // @see https://github.com/Polymer/lit-element/commit/8f1ee40ea0349f320f19258b17ae7f776338e198 → "Add event listeners after first paint"
+    await new Promise(r => setTimeout(r, 0));
+    window.dispatchEvent(new Event('resize'));
   }
 
   /**

@@ -102,11 +102,13 @@ jobs:
       - name: Build
         run: npm run build
 
-#      # https://github.com/marketplace/actions/publish-to-surge-sh
-#      - name: Publish to surge.sh
-#        uses: dswistowski/surge-sh-action@v1.0.0
-#        with:
-#          domain: 'https://amenity-finder-wc.surge.sh'
-#          project: './dist'
-#          login: ${{ secrets.surge_login }}
-#          token: ${{ secrets.surge_token }}
+      - name: Build Storybook
+        run: npm run storybook:build
+
+      # https://github.com/marketplace/actions/github-pages-action
+      - name: Deploys
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
+          allow_empty_commit: true

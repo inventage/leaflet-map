@@ -9,9 +9,6 @@ import { PropertyValues } from 'lit-element/lib/updating-element';
 // @ts-ignore
 import * as L from 'leaflet/dist/leaflet-src.esm.js';
 
-const DEFAULT_ZOOM = 16;
-const MAX_ZOOM = 19;
-
 export interface MarkerInformation {
   latitude: number;
   longitude: number;
@@ -47,6 +44,12 @@ export class LeafletMap extends LitElement {
 
   @property({ type: Boolean })
   detectRetina = true;
+
+  @property({ type: Number })
+  defaultZoom = 16;
+
+  @property({ type: Number })
+  maxZoom = 19;
 
   private map!: Map;
 
@@ -117,7 +120,7 @@ export class LeafletMap extends LitElement {
     // @see https://github.com/leaflet-extras/leaflet-providers
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       detectRetina: this.detectRetina,
-      maxZoom: MAX_ZOOM,
+      maxZoom: this.maxZoom,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.map);
 
@@ -206,7 +209,7 @@ export class LeafletMap extends LitElement {
     return this.latitude && this.longitude && this.map;
   }
 
-  _centerMap(zoom = DEFAULT_ZOOM) {
+  _centerMap(zoom = this.defaultZoom) {
     if (!this._hasValidMapData()) {
       return;
     }

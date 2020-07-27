@@ -38,6 +38,16 @@
           "name": "detectRetina",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "defaultZoom",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "maxZoom",
+          "type": "number",
+          "default": "19"
         }
       ],
       "properties": [
@@ -81,6 +91,18 @@
           "attribute": "detectRetina",
           "type": "boolean",
           "default": "true"
+        },
+        {
+          "name": "defaultZoom",
+          "attribute": "defaultZoom",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "maxZoom",
+          "attribute": "maxZoom",
+          "type": "number",
+          "default": "19"
         }
       ],
       "events": [

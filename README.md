@@ -26,10 +26,12 @@ npm i @inventage/leaflet-map
 
 | Property              | Attribute             | Type                        | Default  |
 | --------------------- | --------------------- | --------------------------- | -------- |
+| `defaultZoom`         | `defaultZoom`         | `number`                    | 16       |
 | `detectRetina`        | `detectRetina`        | `boolean`                   | true     |
 | `latitude`            | `latitude`            | `number`                    | 47.38991 |
 | `longitude`           | `longitude`           | `number`                    | 8.51604  |
 | `markers`             | `markers`             | `MarkerInformation[]`       | []       |
+| `maxZoom`             | `maxZoom`             | `number`                    | 19       |
 | `radius`              | `radius`              | `number`                    | 0        |
 | `selectedMarker`      | `selectedMarker`      | `MarkerInformation \| null` | null     |
 | `updateCenterOnClick` | `updateCenterOnClick` | `boolean`                   | false    |

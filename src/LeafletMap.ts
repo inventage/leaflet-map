@@ -274,15 +274,14 @@ export class LeafletMap extends LitElement {
     }
 
     let bounds;
-    if (this.mapMarkers.length > 0) {
-      bounds = L.featureGroup(this.mapMarkers).getBounds();
-    } else if (this.radiusLayer) {
+    if (this.radiusLayer) {
       bounds = this.radiusLayer.getBounds();
+    } else if (this.mapMarkers.length > 0) {
+      bounds = L.featureGroup(this.mapMarkers).getBounds();
     }
 
     if (bounds) {
       this.map.fitBounds(bounds);
-      // this.map.setZoom(this.map.getBoundsZoom(bounds, true) - 1);
     }
   }
 
@@ -293,7 +292,6 @@ export class LeafletMap extends LitElement {
 
     const { latitude, longitude } = this.selectedMarker;
 
-    // const selectedMarker = this.markers.find(marker => marker.latitude === latitude && marker.longitude === longitude);
     const selectedMarker = this.mapMarkers.find(marker => {
       const { lat, lng } = marker.getLatLng();
 

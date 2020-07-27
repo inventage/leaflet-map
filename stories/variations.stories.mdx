@@ -1,0 +1,23 @@
+import { withKnobs, withWebComponentsKnobs, html, Story, Meta, text, Preview } from '@open-wc/demoing-storybook';
+
+import '../dist/leaflet-map.js';
+
+<!-- @see https://github.com/open-wc/open-wc/edit/master/packages/demoing-storybook/demo/stories/withWebComponentsKnobs.stories.mdx -->
+
+# Card Variations
+
+This story uses [mdx] to document different variations of the card component. Also, the knobs are [automatically generated](https://open-wc.org/demoing-storybook/?path=/docs/decorators-withwebcomponentknobs--example-output) based on `custom-elements.json`.
+
+<Meta
+  title="LeafletMap"
+  decorators={[withKnobs, withWebComponentsKnobs]}
+  parameters={{ component: 'leaflet-map', options: { selectedPanel: 'storybookjs/knobs/panel' } }}
+/>
+
+## Custom Title
+
+<Preview>
+  <Story name="All Knobs">{html`<leaflet-map title="Harry Potter"></leaflet-map>`}</Story>
+</Preview>
+
+[mdx]: https://github.com/mdx-js/mdx

@@ -1,5 +1,6 @@
 ```js script
 import { html } from '@open-wc/demoing-storybook';
+
 import '../dist/leaflet-map.js';
 
 export default {

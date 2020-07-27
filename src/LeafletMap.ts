@@ -1,6 +1,7 @@
 import { css, html, LitElement, property } from 'lit-element';
 import { Circle, Icon, LeafletEvent, LeafletMouseEvent, Map, Marker } from 'leaflet';
 import { PropertyValues } from 'lit-element/lib/updating-element';
+import debounce from '@queso/debounce';
 
 // https://github.com/Leaflet/Leaflet/issues/7055
 // https://github.com/Leaflet/Leaflet/pull/7174
@@ -62,6 +63,8 @@ export class LeafletMap extends LitElement {
   private radiusLayer: Circle | null = null;
 
   private markerRed: Icon;
+
+  private debouncedResize: () => unknown = () => false;
 
   static get styles() {
     return css`
@@ -191,12 +194,16 @@ export class LeafletMap extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('resize', () => this._handleResize());
+    const [debounced] = debounce(() => {
+      this._handleResize();
+    }, 200);
+    this.debouncedResize = debounced;
+    window.addEventListener('resize', this.debouncedResize);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener('resize', () => this._handleResize());
+    window.removeEventListener('resize', this.debouncedResize);
   }
 
   render() {
@@ -326,7 +333,7 @@ export class LeafletMap extends LitElement {
    * @private
    */
   _updateMapSize() {
-    if (!this._hasValidMapData()) {
+    if (!this.map) {
       return;
     }
 

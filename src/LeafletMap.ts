@@ -23,8 +23,8 @@ export interface MarkerInformation {
  * @link https://github.com/Gubancs/leaflet4vaadin
  * @link https://github.com/ggcity/leaflet-map
  *
- * @fires tiles-loading - Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded.
- * @fires center-updated - Event transporting the latitude and longitude each time the map center has updated.
+ * @fires 'tiles-loading' - Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded.
+ * @fires 'center-updated' - Event transporting the latitude and longitude each time the map center has updated.
  */
 export class LeafletMap extends LitElement {
   @property({ type: Number })

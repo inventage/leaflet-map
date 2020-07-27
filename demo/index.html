@@ -19,9 +19,52 @@
       import { html, render } from 'lit-html';
       import '../dist/leaflet-map.js';
 
-      const radius = 1000;
+      const latitude = 47.3902;
+      const longitude = 8.5158;
+      const radius = 200;
+      const markers = [
+        {
+          id: 3284823890,
+          latitude: 47.3901151,
+          longitude: 8.5151409,
+          title: 'Villaggio',
+        },
+        {
+          id: 651504006,
+          latitude: 47.3902919,
+          longitude: 8.5172402,
+          title: 'Angkor',
+        },
+        {
+          id: 3284823880,
+          latitude: 47.3905062,
+          longitude: 8.5174073,
+          title: 'Hokkaido',
+        },
+        {
+          id: 3297129090,
+          latitude: 47.3891608,
+          longitude: 8.5166309,
+          title: 'novotelcafe',
+        },
+        {
+          id: 305586751,
+          latitude: 47.3900555,
+          longitude: 8.5179098,
+          title: 'Toscano im Puls 5',
+        },
+        {
+          id: 2069791719,
+          latitude: 47.3891509,
+          longitude: 8.5177829,
+          title: 'Aubrey',
+        },
+      ];
 
-      render(html`<leaflet-map .radius="${radius}" updateCenterOnClick="1"></leaflet-map> `, document.querySelector('main'));
+      render(
+        html`<leaflet-map .latitude="${latitude}" .longitude="${longitude}" .radius="${radius}" .markers="${markers}"></leaflet-map> `,
+        document.querySelector('main')
+      );
     </script>
   </body>
 </html>

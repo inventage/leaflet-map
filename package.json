@@ -1,5 +1,5 @@
 {
-  "name": "leaflet-map",
+  "name": "@inventage/leaflet-map",
   "description": "Webcomponent leaflet-map following open-wc recommendations",
   "license": "MIT",
   "author": "Inventage AG <info@inventage.com>",

@@ -3,40 +3,6 @@
   "tags": [
     {
       "name": "leaflet-map",
-      "path": "./dist/leaflet-map.d.ts",
-      "properties": [
-        {
-          "name": "latitude",
-          "type": "number"
-        },
-        {
-          "name": "longitude",
-          "type": "number"
-        },
-        {
-          "name": "radius",
-          "type": "number"
-        },
-        {
-          "name": "markers",
-          "type": "MarkerInformation[]"
-        },
-        {
-          "name": "selectedMarker",
-          "type": "MarkerInformation | null"
-        },
-        {
-          "name": "updateCenterOnClick",
-          "type": "boolean"
-        },
-        {
-          "name": "detectRetina",
-          "type": "boolean"
-        }
-      ]
-    },
-    {
-      "name": "leaflet-map",
       "path": "./leaflet-map.ts",
       "attributes": [
         {
@@ -119,10 +85,12 @@
       ],
       "events": [
         {
-          "name": "pending-state"
+          "name": "tiles-loading",
+          "description": "Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded."
         },
         {
-          "name": "center-updated"
+          "name": "center-updated",
+          "description": "Event transporting the latitude and longitude each time the map center has updated."
         }
       ]
     }

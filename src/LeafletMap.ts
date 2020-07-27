@@ -10,6 +10,7 @@ import { PropertyValues } from 'lit-element/lib/updating-element';
 import * as L from 'leaflet/dist/leaflet-src.esm.js';
 
 const DEFAULT_ZOOM = 16;
+const MAX_ZOOM = 19;
 
 export interface MarkerInformation {
   latitude: number;
@@ -21,22 +22,31 @@ export interface MarkerInformation {
  * @link https://github.com/leaflet-extras/leaflet-map/
  * @link https://github.com/Gubancs/leaflet4vaadin
  * @link https://github.com/ggcity/leaflet-map
+ *
+ * @fires tiles-loading - Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded.
+ * @fires center-updated - Event transporting the latitude and longitude each time the map center has updated.
  */
 export class LeafletMap extends LitElement {
-  @property({ type: Number }) latitude = 47.38991;
+  @property({ type: Number })
+  latitude = 47.38991;
 
-  @property({ type: Number }) longitude = 8.51604;
+  @property({ type: Number })
+  longitude = 8.51604;
 
-  @property({ type: Number }) radius = 0;
+  @property({ type: Number })
+  radius = 0;
 
-  // TODO: Custom marker info object
-  @property({ type: Array }) markers: Array<MarkerInformation> = [];
+  @property({ type: Array })
+  markers: Array<MarkerInformation> = [];
 
-  @property({ type: Object }) selectedMarker: MarkerInformation | null = null;
+  @property({ type: Object })
+  selectedMarker: MarkerInformation | null = null;
 
-  @property({ type: Boolean }) updateCenterOnClick = false;
+  @property({ type: Boolean })
+  updateCenterOnClick = false;
 
-  @property({ type: Boolean }) detectRetina = true;
+  @property({ type: Boolean })
+  detectRetina = true;
 
   private map!: Map;
 
@@ -86,12 +96,12 @@ export class LeafletMap extends LitElement {
   firstUpdated(_changedProperties: PropertyValues) {
     super.firstUpdated(_changedProperties);
 
-    const map = this.renderRoot.querySelector('.map') as HTMLElement;
-    if (!map) {
+    const mapDomElement = this.renderRoot.querySelector('.map') as HTMLElement;
+    if (!mapDomElement) {
       return;
     }
 
-    this.map = L.map(map);
+    this.map = L.map(mapDomElement);
 
     // Delayed click handler so we do not interfere with double clicks
     // @see https://github.com/Outdooractive/leaflet-singleclick_0.7
@@ -107,17 +117,21 @@ export class LeafletMap extends LitElement {
     // @see https://github.com/leaflet-extras/leaflet-providers
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       detectRetina: this.detectRetina,
-      maxZoom: 19,
+      maxZoom: MAX_ZOOM,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.map);
 
+    // Fires an event transporting a promise when the tiles layer starts loading tiles
+    // @see https://leafletjs.com/reference-1.6.0.html#gridlayer-loading
     tiles.on('loading', () => {
-      const promise = new Promise(resolve => {
+      // The promise transported in the event resolves once all tiles have loaded
+      // @see https://leafletjs.com/reference-1.6.0.html#gridlayer-load
+      const promise = new Promise<void>(resolve => {
         tiles.on('load', resolve);
       });
 
       this.dispatchEvent(
-        new CustomEvent('pending-state', {
+        new CustomEvent('tiles-loading', {
           composed: true,
           bubbles: true,
           detail: { promise },
@@ -183,6 +197,7 @@ export class LeafletMap extends LitElement {
   }
 
   render() {
+    // noinspection JSUnresolvedLibraryURL
     return html`<link rel="stylesheet" href="https://unpkg.com/leaflet@${L.version}/dist/leaflet.css" />
       <div class="map"></div>`;
   }

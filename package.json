@@ -15,18 +15,18 @@
     "dist/src/**/*.js"
   ],
   "scripts": {
-    "analyze:custom-elements": "wca analyze '**/*.ts' --outFile custom-elements.json",
-    "analyze:custom-elements:watch": "onchange -i '**/*.ts' -- npm run analyze:custom-elements",
-    "prebuild": "npm run analyze:custom-elements",
+    "analyze:wca:json": "wca analyze leaflet-map.ts --outFile custom-elements.json",
+    "analyze:wca:markdown": "wca analyze leaflet-map.ts --format markdown",
+    "prebuild": "npm run analyze:wca:json",
     "build": "tsc",
-    "prebuild:watch": "npm run analyze:custom-elements",
+    "prebuild:watch": "npm run analyze:json",
     "build:watch": "tsc --watch",
     "clean": "rimraf dist custom-elements.json",
     "eslint:check": "for file in `find src -type f -name '*.ts' -o -name '*.js'`; do eslint --print-config $file | eslint-config-prettier-check; done",
     "format": "run-p format:*",
     "format:eslint": "eslint --ext .ts,.html . --fix --ignore-path .gitignore",
-    "format:pretter-package-json": "prettier-package-json --write ./package.json",
     "format:prettier": "prettier \"**/*.js\" \"**/*.ts\" --write --ignore-path .gitignore",
+    "format:prettier-package-json": "prettier-package-json --write ./package.json",
     "lint": "run-p lint:*",
     "lint:analyze": "lit-analyzer leaflet-map.ts --strict",
     "lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
@@ -64,7 +64,6 @@
     "lint-staged": "^10.2.11",
     "lit-analyzer": "^1.2.1",
     "npm-run-all": "^4.1.5",
-    "onchange": "^7.0.2",
     "prettier": "^2.0.5",
     "prettier-package-json": "^2.1.3",
     "rimraf": "^3.0.2",
@@ -90,13 +89,16 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run analyze:custom-elements && git add custom-elements.json",
+      "pre-commit": "lint-staged && npm run analyze:wca:json && git add custom-elements.json",
       "pre-push": "npm run lint"
     }
   },
   "lint-staged": {
-    "*.ts": [
+    "*.{js,ts}": [
       "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{html,md}": [
       "prettier --write"
     ],
     "package.json": [

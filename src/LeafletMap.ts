@@ -82,6 +82,10 @@ export class LeafletMap extends LitElement {
   constructor() {
     super();
 
+    // Set public path to Leaflet marker images explicitly
+    // @see https://github.com/Leaflet/Leaflet/issues/766
+    L.Icon.Default.imagePath = `https://unpkg.com/leaflet@${L.version}/dist/images/`;
+
     this.markerRed = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
       shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',

@@ -37,5 +37,11 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
       },
     },
+    {
+      files: ['test/**/*.test.ts'],
+      rules: {
+        'babel/no-unused-expressions': 'off',
+      },
+    },
   ],
 };

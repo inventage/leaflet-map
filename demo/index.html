@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <style>
       leaflet-map {
+        display: block;
+        min-height: 200px;
         height: 50vh;
+        width: 100%;
       }
     </style>
     <title>&#x3C;leaflet-map&#x3E; demo</title>
@@ -16,15 +19,9 @@
       import { html, render } from 'lit-html';
       import '../dist/leaflet-map.js';
 
-      const title = 'Hello owc World!';
-      render(
-        html`
-          <leaflet-map .title=${title}>
-            some more light-dom
-          </leaflet-map>
-        `,
-        document.querySelector('main')
-      );
+      const radius = 1000;
+
+      render(html`<leaflet-map .radius="${radius}"></leaflet-map> `, document.querySelector('main'));
     </script>
   </body>
 </html>

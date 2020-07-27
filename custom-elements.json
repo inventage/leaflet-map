@@ -113,6 +113,9 @@
         {
           "name": "center-updated",
           "description": "Event transporting the latitude and longitude each time the map center has updated."
+        },
+        {
+          "name": "resize"
         }
       ]
     }

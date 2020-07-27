@@ -152,14 +152,17 @@ export class LeafletMap extends LitElement {
     // Add scale controls
     L.control.scale().addTo(this.map);
 
-    // Update map size before centering and updating markers
-    this._updateMapSize();
-
     // Center map and update layers
     this._centerMap();
     this._updateMapCenterMarker();
     this._updateRadiusLayer();
     this._fitBounds();
+
+    // Give the browser a chance to paint and trigger a resize
+    // Should fix some issues with intial renders
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
   }
 
   /**
@@ -339,7 +342,7 @@ export class LeafletMap extends LitElement {
       return;
     }
 
-    this.map.invalidateSize(true);
+    this.map.invalidateSize();
   }
 
   _onMapClickDelayed(e: LeafletEvent) {

@@ -1,29 +1,39 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "leaflet-map",
-      "description": "A component with a title and an action counter",
-      "properties": [
+      "path": "./leaflet-map.ts",
+      "attributes": [
         {
           "name": "title",
-          "type": "String",
-          "description": "The title of your component",
-          "default": "Hey there"
+          "type": "string",
+          "default": "\"Hey there\""
         },
         {
           "name": "counter",
-          "type": "Number",
-          "description": "An action counter",
-          "default": 0
+          "type": "number",
+          "default": "5"
         }
       ],
-      "events": [],
-      "slots": [],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Hey there\""
+        },
+        {
+          "name": "counter",
+          "attribute": "counter",
+          "type": "number",
+          "default": "5"
+        }
+      ],
       "cssProperties": [
         {
           "name": "--leaflet-map-text-color",
-          "description": "Main Text Color",
+          "description": "Text Color",
           "type": "Color"
         }
       ]

@@ -1,13 +1,18 @@
 import { html, css, LitElement, property, TemplateResult } from 'lit-element';
 
+/**
+ * @cssprop {Color} --leaflet-map-text-color - Text Color
+ */
 export class LeafletMap extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--leaflet-map-text-color, #000);
-    }
-  `;
+  static get styles() {
+    return css`
+      :host {
+        display: block;
+        padding: 25px;
+        color: var(--leaflet-map-text-color, #000);
+      }
+    `;
+  }
 
   @property({ type: String }) title = 'Hey there';
 

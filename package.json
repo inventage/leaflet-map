@@ -84,6 +84,9 @@
     "web-components",
     "webcomponents"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -97,6 +100,9 @@
     "package.json": [
       "prettier-package-json --write"
     ]
+  },
+  "np": {
+    "yarn": false
   },
   "prettier": {
     "singleQuote": true,

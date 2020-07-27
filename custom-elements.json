@@ -3,48 +3,6 @@
   "tags": [
     {
       "name": "leaflet-map",
-      "path": "./dist/leaflet-map.d.ts",
-      "properties": [
-        {
-          "name": "latitude",
-          "type": "number"
-        },
-        {
-          "name": "longitude",
-          "type": "number"
-        },
-        {
-          "name": "radius",
-          "type": "number"
-        },
-        {
-          "name": "markers",
-          "type": "MarkerInformation[]"
-        },
-        {
-          "name": "selectedMarker",
-          "type": "MarkerInformation | null"
-        },
-        {
-          "name": "updateCenterOnClick",
-          "type": "boolean"
-        },
-        {
-          "name": "detectRetina",
-          "type": "boolean"
-        },
-        {
-          "name": "assetsPath",
-          "type": "string"
-        },
-        {
-          "name": "imagePath",
-          "type": "string"
-        }
-      ]
-    },
-    {
-      "name": "leaflet-map",
       "path": "./leaflet-map.ts",
       "attributes": [
         {

@@ -1,0 +1,118 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "leaflet-map",
+      "path": "./leaflet-map.ts",
+      "attributes": [
+        {
+          "name": "latitude",
+          "type": "number",
+          "default": "47.38991"
+        },
+        {
+          "name": "longitude",
+          "type": "number",
+          "default": "8.51604"
+        },
+        {
+          "name": "radius",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "markers",
+          "type": "MarkerInformation[]",
+          "default": "[]"
+        },
+        {
+          "name": "selectedMarker",
+          "type": "MarkerInformation | null"
+        },
+        {
+          "name": "updateCenterOnClick",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "detectRetina",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "assetsPath",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imagePath",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "latitude",
+          "attribute": "latitude",
+          "type": "number",
+          "default": "47.38991"
+        },
+        {
+          "name": "longitude",
+          "attribute": "longitude",
+          "type": "number",
+          "default": "8.51604"
+        },
+        {
+          "name": "radius",
+          "attribute": "radius",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "markers",
+          "attribute": "markers",
+          "type": "MarkerInformation[]",
+          "default": "[]"
+        },
+        {
+          "name": "selectedMarker",
+          "attribute": "selectedMarker",
+          "type": "MarkerInformation | null"
+        },
+        {
+          "name": "updateCenterOnClick",
+          "attribute": "updateCenterOnClick",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "detectRetina",
+          "attribute": "detectRetina",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "assetsPath",
+          "attribute": "assetsPath",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imagePath",
+          "attribute": "imagePath",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "pending-state"
+        },
+        {
+          "name": "center-updated"
+        }
+      ]
+    }
+  ]
+}

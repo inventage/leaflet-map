@@ -1,3 +1,9 @@
+<div align="center">
+    <br>
+    <img src="./assets/undraw_Map_light_3hjy.svg" width="200" alt="undraw.co map illustration">
+    <br>
+</div>
+
 # \<leaflet-map>
 
 A web component for displaying a map with certain features using [Leaflet].

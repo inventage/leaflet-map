@@ -9,6 +9,7 @@
   "module": "dist/index.js",
   "files": [
     "custom-elements.json",
+    "dist/**/*.map",
     "dist/*.d.ts",
     "dist/*.js",
     "dist/src/**/*.d.ts",

@@ -30,7 +30,7 @@ npm i @inventage/leaflet-map
 
 ## Example
 
-https://glitch.com/~inventage-leaflet-map
+https://inventage-leaflet-map.glitch.me/
 
 ## Properties
 

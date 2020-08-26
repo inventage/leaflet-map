@@ -22,7 +22,7 @@ npm i @inventage/leaflet-map
 
 ```html
 <script type="module">
-  import 'leaflet-map/leaflet-map.js';
+  import '@inventage/leaflet-map';
 </script>
 
 <leaflet-map></leaflet-map>

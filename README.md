@@ -28,6 +28,10 @@ npm i @inventage/leaflet-map
 <leaflet-map></leaflet-map>
 ```
 
+## Example
+
+https://glitch.com/~inventage-leaflet-map
+
 ## Properties
 
 | Property              | Attribute             | Type                        | Default  |

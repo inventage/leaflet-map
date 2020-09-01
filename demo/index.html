@@ -13,7 +13,10 @@
     <title>&#x3C;leaflet-map&#x3E; demo</title>
   </head>
   <body>
-    <main></main>
+    <main>
+      <div data-map="1"></div>
+      <div data-map="2"></div>
+    </main>
 
     <script type="module">
       import { html, render } from 'lit-html';
@@ -22,6 +25,7 @@
       const latitude = 47.3902;
       const longitude = 8.5158;
       const radius = 200;
+      const defaultZoom = 8;
       const markers = [
         {
           id: 3284823890,
@@ -62,8 +66,19 @@
       ];
 
       render(
-        html`<leaflet-map .latitude="${latitude}" .longitude="${longitude}" .radius="${radius}" .markers="${markers}"></leaflet-map> `,
-        document.querySelector('main')
+        html`<leaflet-map
+          .latitude="${latitude}"
+          .longitude="${longitude}"
+          .radius="${radius}"
+          .markers="${markers}"
+          .defaultZoom="${defaultZoom}"
+        ></leaflet-map> `,
+        document.querySelector('[data-map="1"]')
+      );
+
+      render(
+        html`<leaflet-map .latitude="${latitude}" .longitude="${longitude}" .defaultZoom="${defaultZoom}"></leaflet-map> `,
+        document.querySelector('[data-map="2"]')
       );
     </script>
   </body>

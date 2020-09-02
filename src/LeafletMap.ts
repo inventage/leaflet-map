@@ -17,6 +17,8 @@ export interface MarkerInformation {
 }
 
 /**
+ * A simple webcomponent wrapper with some functionality around the Leaflet.js map library.
+ *
  * @link https://github.com/leaflet-extras/leaflet-map/
  * @link https://github.com/Gubancs/leaflet4vaadin
  * @link https://github.com/ggcity/leaflet-map

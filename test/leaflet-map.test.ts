@@ -22,6 +22,7 @@ describe('<leaflet-map>', () => {
   describe('Structure', () => {
     it('has a .map item', async () => {
       const el: LeafletMap = await fixture(html`<leaflet-map></leaflet-map>`);
+      // eslint-disable-next-line no-unused-expressions
       expect(el.shadowRoot!.querySelector('.map')).to.exist;
     });
   });

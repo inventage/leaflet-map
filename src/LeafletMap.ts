@@ -36,9 +36,11 @@ export class LeafletMap extends LitElement {
   @property({ type: Number })
   radius = 0;
 
+  /** @private */
   @property({ type: Array })
   markers: Array<MarkerInformation> = [];
 
+  /** @private */
   @property({ type: Object })
   selectedMarker: MarkerInformation | null = null;
 

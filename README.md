@@ -53,4 +53,10 @@ https://inventage-leaflet-map.glitch.me/
 | `center-updated` | `CustomEvent<{ latitude: number; longitude: number; }>` | Event transporting the latitude and longitude each time the map center has updated.                                             |
 | `tiles-loading`  | `CustomEvent<{ promise: Promise<void>; }>`              | Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded. |
 
+## CSS Custom Properties
+
+| Property                   | Type   | Description                    | Default |
+| -------------------------- | ------ | ------------------------------ | ------- |
+| `--leaflet-map-min-height` | Length | Min. height of the map element | `50vh`  |
+
 [leaflet]: https://leafletjs.com/

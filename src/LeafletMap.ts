@@ -52,7 +52,7 @@ export class LeafletMap extends LitElement {
   @property({ type: Number })
   maxZoom = 19;
 
-  private map!: Map;
+  private _map!: Map;
 
   private mapCenterMarker: Marker | null = null;
 
@@ -111,17 +111,17 @@ export class LeafletMap extends LitElement {
       return;
     }
 
-    this.map = L.map(mapDomElement);
+    this._map = L.map(mapDomElement);
 
     // Delayed click handler so we do not interfere with double clicks
     // @see https://github.com/Outdooractive/leaflet-singleclick_0.7
-    this.map.on('click', e => this._onMapClickDelayed(e));
-    this.map.on('dblclick', () => this._clearMapClickDelayedTimeout());
+    this._map.on('click', e => this._onMapClickDelayed(e));
+    this._map.on('dblclick', () => this._clearMapClickDelayedTimeout());
 
     // Fixes click events on iOS touch devices
     // @see https://github.com/Leaflet/Leaflet/issues/6705#issuecomment-575465329
-    if (this.map.tap) {
-      this.map.tap.disable();
+    if (this._map.tap) {
+      this._map.tap.disable();
     }
 
     // @see https://github.com/leaflet-extras/leaflet-providers
@@ -129,7 +129,7 @@ export class LeafletMap extends LitElement {
       detectRetina: this.detectRetina,
       maxZoom: this.maxZoom,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(this.map);
+    }).addTo(this._map);
 
     // Fires an event transporting a promise when the tiles layer starts loading tiles
     // @see https://leafletjs.com/reference-1.6.0.html#gridlayer-loading
@@ -150,7 +150,7 @@ export class LeafletMap extends LitElement {
     });
 
     // Add scale controls
-    L.control.scale().addTo(this.map);
+    L.control.scale().addTo(this._map);
 
     // Center map and update layers
     this._centerMap();
@@ -220,7 +220,7 @@ export class LeafletMap extends LitElement {
   }
 
   _hasValidMapData() {
-    return this.latitude && this.longitude && this.map;
+    return this.latitude && this.longitude && this._map;
   }
 
   _centerMap() {
@@ -228,9 +228,9 @@ export class LeafletMap extends LitElement {
       return;
     }
 
-    const zoom = this.map.getZoom() || this.defaultZoom;
+    const zoom = this._map.getZoom() || this.defaultZoom;
 
-    this.map.setView([this.latitude, this.longitude], zoom);
+    this._map.setView([this.latitude, this.longitude], zoom);
   }
 
   _updateMapCenterMarker() {
@@ -245,8 +245,8 @@ export class LeafletMap extends LitElement {
     }
 
     // Set a new one
-    this.mapCenterMarker = L.marker([this.latitude, this.longitude], { icon: this.markerRed }).addTo(this.map!);
-    this.map.panTo(this.mapCenterMarker!.getLatLng());
+    this.mapCenterMarker = L.marker([this.latitude, this.longitude], { icon: this.markerRed }).addTo(this._map!);
+    this._map.panTo(this.mapCenterMarker!.getLatLng());
   }
 
   _updateMarkers() {
@@ -262,7 +262,7 @@ export class LeafletMap extends LitElement {
     this.mapMarkers = this.markers.map(marker => {
       const { title, latitude, longitude } = marker;
 
-      const mapMarker = L.marker([latitude, longitude]).addTo(this.map);
+      const mapMarker = L.marker([latitude, longitude]).addTo(this._map);
       if (title) {
         mapMarker.bindPopup(title);
       }
@@ -284,7 +284,7 @@ export class LeafletMap extends LitElement {
     }
 
     if (bounds) {
-      this.map.fitBounds(bounds);
+      this._map.fitBounds(bounds);
     }
   }
 
@@ -303,7 +303,7 @@ export class LeafletMap extends LitElement {
 
     if (selectedMarker) {
       selectedMarker.openPopup();
-      this.map.panTo(selectedMarker.getLatLng());
+      this._map.panTo(selectedMarker.getLatLng());
     }
   }
 
@@ -338,11 +338,11 @@ export class LeafletMap extends LitElement {
    * @private
    */
   _updateMapSize() {
-    if (!this.map) {
+    if (!this._map) {
       return;
     }
 
-    this.map.invalidateSize();
+    this._map.invalidateSize();
   }
 
   _onMapClickDelayed(e: LeafletEvent) {
@@ -376,7 +376,7 @@ export class LeafletMap extends LitElement {
       opacity: 0.4,
       fillOpacity: 0.1,
       radius: this.radius,
-    }).addTo(this.map);
+    }).addTo(this._map);
   }
 
   _handleResize() {
@@ -386,5 +386,9 @@ export class LeafletMap extends LitElement {
 
     this._updateMapSize();
     this._fitBounds();
+  }
+
+  get map() {
+    return this._map;
   }
 }

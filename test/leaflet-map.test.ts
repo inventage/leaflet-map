@@ -29,7 +29,7 @@ describe('<leaflet-map>', () => {
 
   describe('Accessibility', () => {
     it('passes the a11y audit', async () => {
-      const el: LeafletMap = await fixture(html` <leaflet-map style="height: 200px; width: 200px;"></leaflet-map> `);
+      const el: LeafletMap = await fixture(html` <leaflet-map style="width: 100%"></leaflet-map> `);
 
       await expect(el).shadowDom.to.be.accessible();
     });

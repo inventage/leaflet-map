@@ -15,7 +15,7 @@ export default {
 A web component for displaying a map with certain features using [Leaflet].
 
 ```js preview-story
-export const Simple = () => html` <leaflet-map style="height: 200px;"></leaflet-map> `;
+export const Simple = () => html` <leaflet-map></leaflet-map> `;
 ```
 
 ## API

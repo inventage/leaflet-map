@@ -23,6 +23,8 @@ export interface MarkerInformation {
  *
  * @fires 'tiles-loading' - Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded.
  * @fires 'center-updated' - Event transporting the latitude and longitude each time the map center has updated.
+ *
+ * @cssprop {Length} --leaflet-map-min-height - Min. height of the map element
  */
 export class LeafletMap extends LitElement {
   @property({ type: Number })
@@ -69,12 +71,15 @@ export class LeafletMap extends LitElement {
   static get styles() {
     return css`
       :host {
+        --leaflet-map-min-height: 50vh;
+
         display: block;
       }
 
       .map {
         width: 100%;
         height: 100%;
+        min-height: var(--leaflet-map-min-height);
       }
     `;
   }

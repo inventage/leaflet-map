@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Inventage AG <info@inventage.com>",
   "repository": "inventage/leaflet-map",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "main": "dist/leaflet-map.js",
   "module": "dist/leaflet-map.js",
   "files": [

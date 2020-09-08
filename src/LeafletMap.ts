@@ -25,6 +25,7 @@ export interface MarkerInformation {
  *
  * @fires 'tiles-loading' - Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded.
  * @fires 'center-updated' - Event transporting the latitude and longitude each time the map center has updated.
+ * @fires 'map-ready' - Event transporting an leaflet map instance. Fires using the `whenReady` event of leaflet map.
  *
  * @cssprop {Length} --leaflet-map-min-height - Min. height of the map element
  */
@@ -126,6 +127,9 @@ export class LeafletMap extends LitElement {
     // @see https://github.com/Outdooractive/leaflet-singleclick_0.7
     this._map.on('click', e => this._onMapClickDelayed(e));
     this._map.on('dblclick', () => this._clearMapClickDelayedTimeout());
+
+    // Fire `map-ready` event using the `whenReady` Leaflet map event
+    this.map.whenReady(() => this._onMapReady());
 
     // Fixes click events on iOS touch devices
     // @see https://github.com/Leaflet/Leaflet/issues/6705#issuecomment-575465329
@@ -360,6 +364,16 @@ export class LeafletMap extends LitElement {
     this.mapClickDelayedTimeout = window.setTimeout(() => {
       this._onMapClick(e);
     }, 500);
+  }
+
+  _onMapReady() {
+    this.dispatchEvent(
+      new CustomEvent('map-ready', {
+        detail: {
+          map: this.map,
+        },
+      })
+    );
   }
 
   _clearMapClickDelayedTimeout() {

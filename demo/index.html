@@ -69,6 +69,7 @@
           .radius="${radius}"
           .markers="${markers}"
           .defaultZoom="${defaultZoom}"
+          @map-ready="${e => console.info(e)}"
         ></leaflet-map> `,
         document.querySelector('[data-map="1"]')
       );

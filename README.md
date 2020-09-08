@@ -51,6 +51,7 @@ https://inventage-leaflet-map.glitch.me/
 | Event            | Type                                                    | Description                                                                                                                     |
 | ---------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `center-updated` | `CustomEvent<{ latitude: number; longitude: number; }>` | Event transporting the latitude and longitude each time the map center has updated.                                             |
+| `map-ready`      | `CustomEvent<{ map: Map; }>`                            | Event transporting an leaflet map instance. Fires using the `whenReady` event of leaflet map.                                   |
 | `tiles-loading`  | `CustomEvent<{ promise: Promise<void>; }>`              | Event transporting a promise, fires when the tiles layer starts loading tiles. The promise resolves once all tiles have loaded. |
 
 ## CSS Custom Properties

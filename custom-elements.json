@@ -100,6 +100,10 @@
           "description": "Event transporting the latitude and longitude each time the map center has updated."
         },
         {
+          "name": "map-ready",
+          "description": "Event transporting an leaflet map instance. Fires using the `whenReady` event of leaflet map."
+        },
+        {
           "name": "resize"
         }
       ],

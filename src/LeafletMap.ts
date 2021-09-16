@@ -293,8 +293,6 @@ export class LeafletMap extends LitElement {
           ${url ? `<a part="popup-url" class="popup-url" href="${url}">${url}</a>` : ''}
         </div>`;
 
-        console.log(template);
-
         mapMarker.bindPopup(template);
       }
 

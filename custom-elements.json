@@ -112,6 +112,11 @@
           "name": "--leaflet-map-min-height",
           "description": "Min. height of the map element",
           "type": "Length"
+        },
+        {
+          "name": "--leaflet-popup-item-spacing",
+          "description": "Spacing of title + url items inside marker popup",
+          "type": "Length"
         }
       ]
     }

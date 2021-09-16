@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "es2015",
+    "target": "es2018",
+    "module": "esnext",
     "lib": ["es2017", "dom", "dom.iterable"],
     "moduleResolution": "node",
     "declaration": true,
@@ -9,10 +9,12 @@
     "sourceMap": true,
     "outDir": "dist",
     "rootDir": ".",
+    "incremental": true,
     "strict": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
+    "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
     "plugins": [
       {

@@ -1,4 +1,4 @@
-import { css, html, LitElement, property } from 'lit-element';
+import { css, html, state, LitElement, property } from 'lit-element';
 import { Circle, Icon, LeafletEvent, LeafletMouseEvent, Map, Marker } from 'leaflet';
 import { PropertyValues } from 'lit-element/lib/updating-element';
 import debounce from '@queso/debounce';
@@ -14,6 +14,7 @@ export interface MarkerInformation {
   latitude: number;
   longitude: number;
   title?: string;
+  url?: string;
 }
 
 /**
@@ -28,6 +29,7 @@ export interface MarkerInformation {
  * @fires 'map-ready' - Event transporting an leaflet map instance. Fires using the `whenReady` event of leaflet map.
  *
  * @cssprop {Length} --leaflet-map-min-height - Min. height of the map element
+ * @cssprop {Length} --leaflet-popup-item-spacing - Spacing of title + url items inside marker popup
  */
 export class LeafletMap extends LitElement {
   @property({ type: Number })
@@ -40,11 +42,11 @@ export class LeafletMap extends LitElement {
   radius = 0;
 
   /** @private */
-  @property({ type: Array })
+  @state()
   markers: Array<MarkerInformation> = [];
 
   /** @private */
-  @property({ type: Object })
+  @state()
   selectedMarker: MarkerInformation | null = null;
 
   @property({ type: Boolean })
@@ -85,6 +87,15 @@ export class LeafletMap extends LitElement {
         width: 100%;
         height: 100%;
         min-height: var(--leaflet-map-min-height);
+      }
+
+      .popup-title,
+      .popup-url {
+        display: block;
+      }
+
+      .popup-title + .popup-url {
+        margin-top: var(--leaflet-popup-item-spacing, 0.25rem);
       }
     `;
   }
@@ -273,11 +284,18 @@ export class LeafletMap extends LitElement {
 
     // Add new markers for each marker from the custom element property
     this.mapMarkers = this.markers.map(marker => {
-      const { title, latitude, longitude } = marker;
+      const { title, url, latitude, longitude } = marker;
 
       const mapMarker = L.marker([latitude, longitude]).addTo(this._map);
-      if (title) {
-        mapMarker.bindPopup(title);
+      if (title || url) {
+        const template = `<div part="popup" class="popup">
+          ${title ? `<span part="popup-title" class="popup-title">${title}</span>` : ''}
+          ${url ? `<a part="popup-url" class="popup-url" href="${url}">${url}</a>` : ''}
+        </div>`;
+
+        console.log(template);
+
+        mapMarker.bindPopup(template);
       }
 
       return mapMarker;

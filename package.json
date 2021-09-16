@@ -32,6 +32,7 @@
     "lint:analyze": "lit-analyzer leaflet-map.ts --strict",
     "lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
     "lint:prettier": "prettier \"**/*.js\" \"**/*.ts\" --check --ignore-path .gitignore",
+    "prepublishOnly": "npm run build",
     "start": "npm run clean && concurrently -k -n tsc,es-dev-server 'npm run build:watch' 'es-dev-server --app-index demo/index.html --open'",
     "storybook": "concurrently -k -n tsc,storybook 'npm run build:watch' start-storybook",
     "storybook:build": "build-storybook",
